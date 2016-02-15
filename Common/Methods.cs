@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Common {
     class Methods {
-        public static Guid getGUID() {
+        public static Guid setGUID() {
             System.Guid guid = new Guid();
             guid = Guid.NewGuid();
             return guid;

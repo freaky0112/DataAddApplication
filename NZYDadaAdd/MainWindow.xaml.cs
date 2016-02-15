@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,5 +22,36 @@ namespace NZYDadaAdd {
         public MainWindow() {
             InitializeComponent();
         }
+
+        private NZYData nzydata;
+
+        private void ShowAddNZYDataDialog(bool bShow) {
+            this.AddNZYDataDialog.IsOpen = bShow;
+            this.MainGrid.IsEnabled = !bShow;
+        }
+
+        private void btnAddNZYData_Click(object sender, RoutedEventArgs e) {
+            ShowAddNZYDataDialog(true);
+        }
+
+        private void Dlg_BtnClose_Click(object sender, RoutedEventArgs e) {
+            ShowAddNZYDataDialog(false);
+        }
+
+        private void Dlg_BtnOK_Click(object sender, RoutedEventArgs e) {
+            ShowAddNZYDataDialog(false);
+            nzydata = new NZYData(tbxNZYName.Text);
+            NZYDataGrid.DataContext = nzydata;
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e) {
+            nzydata = null;
+        }
+
+        private void btnSubmit_Click(object sender, RoutedEventArgs e) {
+
+        }
     }
+
+
 }

@@ -8,9 +8,10 @@ namespace Common {
     /// <summary>
     /// 农转用数据
     /// </summary>
-    class NZYData:Data {
-        public NZYData() {
-            this.guid = Methods.getGUID();
+    public class NZYData:Data {
+        public NZYData(string name) {
+            this.Name = name;
+            this.guid = Methods.setGUID();
         }
         private Guid guid;
         private List<NZYDKData> dk;
@@ -25,7 +26,7 @@ namespace Common {
         /// <summary>
         /// 批次所含地块
         /// </summary>
-        internal List<NZYDKData> Dk {
+        public List<NZYDKData> Dk {
             get {
                 return dk;
             }
@@ -35,11 +36,38 @@ namespace Common {
             }
         }
 
+        public override string ToString() {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("该批次包含耕地");
+            sb.Append(this.PaddyArea + this.DryArea);
+            sb.Append("平方米，其中");
+            if (PaddyArea>0) {
+                sb.Append("水田");
+                sb.Append(PaddyArea);
+                sb.Append("平方米，平均等级");
+                sb.Append(PaddyLevel);
+                sb.Append("级");
+                if (DryArea>0) {
+                    sb.Append("，");
+                }
+            }
+            if (DryArea>0) {
+                sb.Append("旱地");
+                sb.Append(DryArea);
+                sb.Append("平方米，平均等级");
+                sb.Append(DryLevel);
+                sb.Append("级");
+            }
+            sb.Append("。");
+            return sb.ToString();
+        }
+
     }
 
-    class NZYDKData:Data {
-        public NZYDKData() { }
-
+    public class NZYDKData:Data {
+        public NZYDKData(string name) {
+            this.Name = name;
+        }
 
     }
 }

@@ -5,19 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Common {
-    class Data {
+    public class Data {
 
         public Data() {
             //this.guid = Methods.getGUID();
+            this.dryArea = 0;
+            this.dryLevel = 0;
+            this.paddyArea = 0;
+            this.paddyLevel = 0;
         }
 
 
-        protected string name;
-        protected double paddyArea;
-        protected double dryArea;
-        protected double paddyLevel;
-        protected double dryLevel;
-        protected string summary;
+        private string name;
+        private double paddyArea;
+        private double dryArea;
+        private double paddyLevel;
+        private double dryLevel;
+        private string summary;
 
         /// <summary>
         /// 名称
