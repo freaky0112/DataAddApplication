@@ -1,0 +1,14 @@
+﻿<Window x:Class="DataAddApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataAddApplication"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button x:Name="btnImport" Content="导入" HorizontalAlignment="Left" Margin="57,68,0,0" VerticalAlignment="Top" Width="75" Click="btnImport_Click"/>
+        <Button x:Name="btnConnectMySQL" Content="上传" HorizontalAlignment="Left" Margin="57,115,0,0" VerticalAlignment="Top" Width="75" Click="btnConnectMySQL_Click"/>
+
+    </Grid>
+</Window>
