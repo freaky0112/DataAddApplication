@@ -101,6 +101,14 @@
       <Project>{f929dc97-942b-4cb4-97f4-0a421c549e48}</Project>
       <Name>Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataOperator\DataOperator.csproj">
+      <Project>{495a9b0d-4e28-4d91-b34d-1d0a77c5bc18}</Project>
+      <Name>DataOperator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToolsHelper\ToolsHelper.csproj">
+      <Project>{634ebfa6-ea41-4a7b-81e5-99a2eca2430a}</Project>
+      <Name>ToolsHelper</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -24,5 +24,9 @@ namespace DataOperator.NZY {
             }
             return list;
         }
+
+        public static void dataAdd(NZYData data) {
+            StringBuilder sql = new StringBuilder();
+        }
     }
 }
