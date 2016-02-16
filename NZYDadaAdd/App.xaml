@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:NZYDadaAdd"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="contentCenterStyle"  
+               TargetType="{x:Type TextBlock}">
+            <Setter Property="HorizontalAlignment"  
+                    Value="Center" />
+        </Style>
     </Application.Resources>
+    
 </Application>

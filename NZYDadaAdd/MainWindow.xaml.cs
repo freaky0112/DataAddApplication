@@ -28,6 +28,7 @@ namespace NZYDadaAdd {
         private void ShowAddNZYDataDialog(bool bShow) {
             this.AddNZYDataDialog.IsOpen = bShow;
             this.MainGrid.IsEnabled = !bShow;
+            this.tbxNZYName.Focus();
         }
 
         private void btnAddNZYData_Click(object sender, RoutedEventArgs e) {
@@ -42,14 +43,19 @@ namespace NZYDadaAdd {
             ShowAddNZYDataDialog(false);
             nzydata = new NZYData(tbxNZYName.Text);
             NZYDataGrid.DataContext = nzydata;
+            NZYDKData dt = new NZYDKData("aaa");
+            nzydata.Dk.Add(dt);
+            dkGrid.DataContext = nzydata.Dk;
+
+            //dkGrid.ItemsSource = nzydata.Dk;
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e) {
-            nzydata = null;
+            nzydata.Clear();
         }
 
         private void btnSubmit_Click(object sender, RoutedEventArgs e) {
-
+            MessageBox.Show(nzydata.ToString());
         }
     }
 

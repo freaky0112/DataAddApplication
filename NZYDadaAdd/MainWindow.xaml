@@ -50,25 +50,39 @@
                 </TextBox>
             </Grid>
             <Grid Margin="10,36,10,20">
-                <DataGrid x:Name="dataGrid" Margin="0" d:LayoutOverrides="Width, Height" Tag="Binding Guid">
+                <DataGrid x:Name="dkGrid" Margin="0" CanUserAddRows="True" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" d:LayoutOverrides="Width, Height" AutoGenerateColumns="False" Tag="{Binding Guid}" ItemsSource="{Binding}">
+                    <DataGrid.ColumnHeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="HorizontalContentAlignment" Value="Center">
+                            </Setter>
+                        </Style>
+                    </DataGrid.ColumnHeaderStyle>
+                    <!--<DataGridCell HorizontalContentAlignment="Center"></DataGridCell>-->
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="序号" Binding="{Binding ID, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <DataGridTextColumn Header="地块名称" Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <DataGridTextColumn Header="水田面积" Binding="{Binding PaddyArea, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <DataGridTextColumn Header="水田等级" Binding="{Binding PaddyLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <DataGridTextColumn Header="旱地面积" Binding="{Binding DryArea, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <DataGridTextColumn Header="旱地等级" Binding="{Binding DryLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
-                        <DataGridTextColumn Header="备注" Binding="{Binding Summary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        <DataGridTextColumn   Header="序号" ElementStyle="{StaticResource contentCenterStyle}"    IsReadOnly="True"  Binding="{Binding Path=ID}" Width="*" />
+                        <DataGridTextColumn Header="地块名称" ElementStyle="{StaticResource contentCenterStyle}"    Binding="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" />
+                        <DataGridTextColumn Header="水田面积" ElementStyle="{StaticResource contentCenterStyle}"   Binding="{Binding PaddyArea, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" />
+                        <DataGridTextColumn Header="水田等级" ElementStyle="{StaticResource contentCenterStyle}"   Binding="{Binding PaddyLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" />
+                        <DataGridTextColumn Header="旱地面积" ElementStyle="{StaticResource contentCenterStyle}"   Binding="{Binding DryArea, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" />
+                        <DataGridTextColumn Header="旱地等级" ElementStyle="{StaticResource contentCenterStyle}"   Binding="{Binding DryLevel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" />
+                        <DataGridTextColumn Header="备注"  ElementStyle="{StaticResource contentCenterStyle}"  Binding="{Binding Summary, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="*" />
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button>X</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </Grid>
             <Grid Margin="10,0" Height="20" VerticalAlignment="Bottom">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="3*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="60" />
+                    <ColumnDefinition Width="60" />
                 </Grid.ColumnDefinitions>
-
+                <Label x:Name="lblToString" Grid.Column="0" Margin="0" Content="{Binding Text,Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" ></Label>
                 <Button x:Name="btnSubmit" Content="提交" Grid.Column="1" Margin="0" Click="btnSubmit_Click"></Button>
                 <Button x:Name="btnCancel" Content="取消" Grid.Column="2" Margin="0" Click="btnCancel_Click"></Button>
             </Grid>

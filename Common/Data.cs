@@ -1,11 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Common {
-    public class Data {
+    public class Data: INotifyPropertyChanged {
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void NotifyPropertyChanged(String info) {
+            if (PropertyChanged != null) {
+                PropertyChanged(this, new PropertyChangedEventArgs(info));
+            }
+        }
 
         public Data() {
             //this.guid = Methods.getGUID();
@@ -33,6 +41,7 @@ namespace Common {
 
             set {
                 name = value;
+                this.NotifyPropertyChanged("Name");
             }
         }
         /// <summary>
@@ -45,6 +54,7 @@ namespace Common {
 
             set {
                 paddyArea = value;
+                this.NotifyPropertyChanged("PaddyArea");
             }
         }
         /// <summary>
@@ -57,6 +67,7 @@ namespace Common {
 
             set {
                 dryArea = value;
+                this.NotifyPropertyChanged("DryArea");
             }
         }
         /// <summary>
@@ -64,11 +75,12 @@ namespace Common {
         /// </summary>
         public double PaddyLevel {
             get {
-                return PaddyLevel;
+                return paddyLevel;
             }
 
             set {
-                PaddyLevel = value;
+                paddyLevel = value;
+                this.NotifyPropertyChanged("PaddyLevel");
             }
         }
 
@@ -79,6 +91,7 @@ namespace Common {
 
             set {
                 dryLevel = value;
+                this.NotifyPropertyChanged("DryLevel");
             }
         }
         /// <summary>
@@ -91,7 +104,13 @@ namespace Common {
 
             set {
                 summary = value;
+                this.NotifyPropertyChanged("Summary");
             }
+        }
+
+        public virtual  void Clear() {
+            this.name = string.Empty;
+            this.summary = string.Empty;
         }
     }
 }
