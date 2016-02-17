@@ -54,6 +54,7 @@ namespace NZYDadaAdd {
             dkGrid.DataContext = nzydata.Dk;
             dkGrid.CanUserAddRows = true;
             btnImport.IsEnabled = true;
+            
             //dkGrid.ItemsSource = nzydata.Dk;
         }
         /// <summary>
@@ -71,7 +72,8 @@ namespace NZYDadaAdd {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnSubmit_Click(object sender, RoutedEventArgs e) {
-            MessageBox.Show(nzydata.ToString());
+            //MessageBox.Show(nzydata.ToString());
+            DataSubmit.dataAdd(nzydata);
         }
         #region 添加数据已不需要
         private void btnAddNZYDKData_Click(object sender, RoutedEventArgs e) {
@@ -102,7 +104,14 @@ namespace NZYDadaAdd {
         /// <param name="e"></param>
         private void btnImport_Click(object sender, RoutedEventArgs e) {
             string filename = openFile();
-            DataRead.ImportDkFromExcel(filename,nzydata);
+            if (!filename.Equals("openfaild")) {
+                try {
+                    DataRead.ImportDkFromExcel(filename, nzydata);
+                    MessageBox.Show("提交成功");
+                } catch (Exception ex) {
+                    MessageBox.Show(ex.Message);
+                }
+            }
         }
 
         /// <summary>

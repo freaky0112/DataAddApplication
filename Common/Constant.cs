@@ -20,6 +20,8 @@ namespace Common {
 
         public const string NZY_TABLE = "NZY";
 
+        public const string NZYDK_TABLE = "NZYDK";
+
         /// <summary>
         /// 返回数据库连接字符串
         /// </summary>

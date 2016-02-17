@@ -49,7 +49,7 @@ namespace Common {
         /// </summary>
         public double PaddyArea {
             get {
-                return paddyArea;
+                return Math.Round(paddyArea,4);
             }
 
             set {
@@ -62,7 +62,7 @@ namespace Common {
         /// </summary>
         public double DryArea {
             get {
-                return dryArea;
+                return Math.Round(dryArea,4);
             }
 
             set {
